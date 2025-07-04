@@ -1,418 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hotel Haren Grand- Food Menu</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <style>
-    /* Global */
-    * {
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Haren Grand - Food Menu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f3efef;
-      color: #fff;
-      background-image: url('images/bg.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      transition: background-image 0.3s, background-color 0.3s, color 0.3s;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+      body {
+        margin: 0;
+        font-family: "Montserrat", sans-serif;
+        background-color: #f3efef;
+        color: #fff;
+        background-image: url("images/bg.jpeg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        transition: background-image 0.3s, background-color 0.3s, color 0.3s;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
 
-    /* Header */
-    header {
-      text-align: center;
-      padding: 20px;
-    }
+      header {
+        text-align: center;
+        padding: 20px;
+      }
 
-    /* .logo-title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    } */
+      header h1 {
+        margin: 0;
+        font-size: 3em;
+        color: #ffd700;
+      }
 
-    /* .logo-title img {
-      max-height: 170px;
-    } */
+      header h2 {
+        margin: 5px 0 0;
+        font-size: 1.5em;
+        color: #fff;
+      }
 
-    header h1 {
-      margin: 0;
-      font-size: 3em;
-      color: #FFD700;
-    }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+      }
 
-    header h2 {
-      margin: 5px 0 0;
-      font-size: 1.5em;
-      color: #fff;
-    }
+      .topbar button {
+        background: none;
+        border: none;
+        font-size: 1.5em;
+        color: #ffd700;
+        cursor: pointer;
+      }
 
-    /* Topbar */
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+      .search-box {
+        padding: 6px 10px;
+        font-size: 1em;
+        border-radius: 6px;
+        border: none;
+        width: 250px;
+      }
 
-    .topbar button {
-      background: none;
-      border: none;
-      font-size: 1.5em;
-      color: #FFD700;
-      cursor: pointer;
-    }
+      .menu-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 30px;
+        flex: 1;
+      }
 
-    /* Menu Container */
-    .menu-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 30px;
-      flex: 1;
-    }
+      .menu-section {
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        color: #fff;
+        backdrop-filter: blur(10px);
+      }
 
-    .menu-section {
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-      color: #fff;
-      backdrop-filter: blur(10px);
-    }
+      .menu-section h3 {
+        border-bottom: 2px solid #ffd700;
+        padding-bottom: 6px;
+        margin-bottom: 12px;
+        font-size: 1.3em;
+        color: #ffd700;
+      }
 
-    .menu-section h3 {
-      border-bottom: 2px solid #FFD700;
-      padding-bottom: 6px;
-      margin-bottom: 12px;
-      font-size: 1.3em;
-      color: #FFD700;
-    }
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        border-bottom: 1px dashed #aaa;
+        font-size: 0.95em;
+      }
 
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 6px 0;
-      border-bottom: 1px dashed #aaa;
-      font-size: 0.95em;
-    }
+      .menu-item:last-child {
+        border-bottom: none;
+      }
 
-    .menu-item:last-child {
-      border-bottom: none;
-    }
+      footer {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #ccc;
+        font-size: 0.95em;
+        text-align: center;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-   footer {
-  display: block;
-  width: 100%;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-  color: #ccc;
-  font-size: 0.95em;
-  text-align: center;
-  backdrop-filter: blur(8px); /* glass effect */
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+      footer .highlight {
+        color: #ffd700;
+        font-weight: 600;
+      }
 
+      body.dark-mode {
+        color: #fff;
+        background-color: #1a1a1a;
+        background-image: url("images/menu-bg.jpeg");
+      }
 
-    footer p {
-      margin: 5px 0;
-      line-height: 1.6;
-    }
+      body.dark-mode .menu-section,
+      body.dark-mode footer {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: #111;
+        backdrop-filter: blur(10px);
+      }
 
-    footer .highlight {
-      color: #FFD700;
-      font-weight: 600;
-    }
+      body.dark-mode .menu-section h3 {
+        border-color: #d35400;
+        color: #d35400;
+      }
 
-    /* Dark Mode */
-    body.dark-mode {
-      color: #fff;
-      background-color: #1a1a1a;
-      background-image: url('images/menu-bg.jpeg');
-    }
+      body.dark-mode .menu-item {
+        border-bottom: 1px dashed #555;
+        color: #000;
+      }
 
-    body.dark-mode .menu-section,
-    body.dark-mode footer {
-      background-color: rgba(255, 255, 255, 0.5);
-      color: #111;
-      backdrop-filter: blur(10px);
-    }
+      body.dark-mode .topbar button {
+        color: #d35400;
+      }
 
-    body.dark-mode .menu-section h3 {
-      border-color: #d35400;
-      color: #d35400;
-    }
+      body.dark-mode .highlight {
+        color: #d35400;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Hotel Haren Grand</h1>
+      <h2>Food Menu</h2>
+    </header>
 
-    body.dark-mode .menu-item {
-      border-bottom: 1px dashed #555;
-      color: #000;
-    }
+    <div class="topbar">
+      <input
+        type="text"
+        class="search-box"
+        id="searchInput"
+        oninput="filterMenu()"
+        placeholder="Search menu..."
+      />
+      <button onclick="toggleDarkMode()">
+        <i class="bi bi-moon-stars-fill"></i>
+      </button>
+    </div>
 
-    body.dark-mode .topbar button {
-      color: #d35400;
-    }
+    <div class="menu-container" id="menuContainer">
+      <div class="menu-section">
+        <h3>Beverages</h3>
+        <div class="menu-item"><span>Black Tea</span><span>₹30</span></div>
+        <div class="menu-item"><span>Milk Tea</span><span>₹50</span></div>
+        <div class="menu-item"><span>Coffee</span><span>₹60</span></div>
+        <div class="menu-item"><span>Cold Drink</span><span>₹60</span></div>
+        <div class="menu-item"><span>Coffee</span><span>₹60</span></div>
+        <div class="menu-item">
+          <span>Fresh Lime Water</span><span>₹50</span>
+        </div>
+        <div class="menu-item">
+          <span>Fresh Lime Soda</span><span>₹60</span>
+        </div>
+        <div class="menu-item"><span>Lassi</span><span>₹120</span></div>
+        <div class="menu-item">
+          <span>Packaged Drinking Water</span><span>₹20</span>
+        </div>
+        <div class="menu-item"><span>Green Tea</span><span>₹50</span></div>
+      </div>
+      <div class="menu-section">
+        <h3>Soup (Veg)</h3>
+        <div class="menu-item"><span>Mankhow Soup</span><span>₹120</span></div>
+        <div class="menu-item"><span>Clear Soup</span><span>₹120</span></div>
+        <div class="menu-item">
+          <span>Hot & Sour Soup</span><span>₹150</span>
+        </div>
+        <div class="menu-item"><span>Tomato Soup</span><span>₹120</span></div>
+      </div>
 
-    body.dark-mode .highlight {
-      color: #d35400;
-    }
+      <div class="menu-section">
+        <h3>Soup (Non-Veg)</h3>
+        <div class="menu-item"><span>Mankhow Soup</span><span>₹150</span></div>
+        <div class="menu-item"><span>Clear Soup</span><span>₹200</span></div>
+        <div class="menu-item">
+          <span>Hot & Sour Soup</span><span>₹200</span>
+        </div>
+      </div>
 
-    /* body.dark-mode .logo-title {
-      color: #fff;
-    } */
-  </style>
-</head>
-<body>
+      <div class="menu-section">
+        <h3>Starter (Veg)</h3>
+        <div class="menu-item"><span>Paneer Pakoda</span><span>₹150</span></div>
+        <div class="menu-item"><span>Veg Pakoda</span><span>₹100</span></div>
+        <div class="menu-item"><span>French Fry</span><span>₹120</span></div>
+        <div class="menu-item">
+          <span>Crispy Chilly Baby Corn</span><span>₹220</span>
+        </div>
+        <div class="menu-item"><span>Veg Roll</span><span>₹100</span></div>
+        <div class="menu-item"><span>Peanut Masala</span><span>₹120</span></div>
+        <div class="menu-item">
+          <span>Chilly Paneer Dry</span><span>₹200</span>
+        </div>
+        <div class="menu-item"><span>Paneer Roll</span><span>₹120</span></div>
+        <div class="menu-item"><span>Garlic Potato</span><span>₹150</span></div>
+      </div>
 
-  <header>
-    <!-- <div class="logo-title">
-      <img src="images/logo.png" alt="Kitchen Tales Logo">
-      <div> -->
-        <h1>Hotel Haren Grand</h1>
-        <h2>Food Menu</h2>
+      <div class="menu-section">
+        <h3>Starter (Non-Veg)</h3>
+        <div class="menu-item">
+          <span>Hotel Haren Grand Spl. Roll</span><span>₹200</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Pakoda</span><span>₹150</span>
+        </div>
+        <div class="menu-item"><span>Chicken Roll</span><span>₹150</span></div>
+        <div class="menu-item">
+          <span>Chicken Dry Fry</span><span>₹230</span>
+        </div>
+        <div class="menu-item">
+          <span>Chilly Chicken Dry</span><span>₹250</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Finger</span><span>₹200</span>
+        </div>
+        <div class="menu-item"><span>Fish Finger</span><span>₹180</span></div>
+        <div class="menu-item"><span>Fish Fry</span><span>₹220</span></div>
+        <div class="menu-item">
+          <span>Small Fish Fry</span><span>₹180</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Manchurian</span><span>₹300</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Indian Bread</h3>
+        <div class="menu-item"><span>Plain Roti</span><span>₹30</span></div>
+        <div class="menu-item"><span>Butter Roti</span><span>₹40</span></div>
+        <div class="menu-item"><span>Tandoori Roti</span><span>₹80</span></div>
+        <div class="menu-item">
+          <span>Tandoori Butter Roti</span><span>₹90</span>
+        </div>
+        <div class="menu-item"><span>Butter Nan</span><span>₹80</span></div>
+        <div class="menu-item"><span>Plain Nan</span><span>₹60</span></div>
+        <div class="menu-item"><span>Lacha Paratha</span><span>₹80</span></div>
+        <div class="menu-item"><span>Plain Paratha</span><span>₹60</span></div>
+        <div class="menu-item"><span>Aloo Paratha</span><span>₹80</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Indian Veg</h3>
+        <div class="menu-item"><span>Tawa Veg</span><span>₹150</span></div>
+        <div class="menu-item"><span>Mix Veg</span><span>₹120</span></div>
+        <div class="menu-item"><span>Seasonal Veg</span><span>₹80</span></div>
+        <div class="menu-item"><span>Alu Bhaji</span><span>₹100</span></div>
+        <div class="menu-item"><span>Alu Matar</span><span>₹150</span></div>
+        <div class="menu-item"><span>Alu Jeera</span><span>₹120</span></div>
+        <div class="menu-item"><span>Alu Dum</span><span>₹150</span></div>
+        <div class="menu-item">
+          <span>Kashmiri Alu Dum</span><span>₹180</span>
+        </div>
+        <div class="menu-item"><span>Alu Pitika</span><span>₹80</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Biryani</h3>
+        <div class="menu-item"><span>Veg Biryani</span><span>₹150</span></div>
+        <div class="menu-item">
+          <span>Chicken Biryani</span><span>₹250</span>
+        </div>
+        <div class="menu-item">
+          <span>Mutton Biryani</span><span>₹450</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Sandwich</h3>
+        <div class="menu-item"><span>Veg Sandwich</span><span>₹100</span></div>
+        <div class="menu-item">
+          <span>Chicken Sandwich</span><span>₹150</span>
+        </div>
+        <div class="menu-item">
+          <span>Cheese Sandwich</span><span>₹120</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Noodles & Maggi</h3>
+        <div class="menu-item"><span>Korean Ramen</span><span>₹300</span></div>
+        <div class="menu-item">
+          <span>Veg Hakka Noodles</span><span>₹150</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Hakka Noodles</span><span>₹200</span>
+        </div>
+        <div class="menu-item"><span>Plain Maggi</span><span>₹100</span></div>
+        <div class="menu-item"><span>Chicken Maggi</span><span>₹150</span></div>
+        <div class="menu-item"><span>Egg Maggi</span><span>₹120</span></div>
+        <div class="menu-item"><span>Cheese Maggi</span><span>₹120</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Prawn</h3>
+        <div class="menu-item"><span>Prawn Dry Fry</span><span>₹300</span></div>
+        <div class="menu-item"><span>Prawn Gravy</span><span>₹350</span></div>
+        <div class="menu-item"><span>Garlic Prawn</span><span>₹350</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Momo</h3>
+        <div class="menu-item"><span>Veg Momo</span><span>₹100</span></div>
+        <div class="menu-item"><span>Chicken Momo</span><span>₹150</span></div>
+        <div class="menu-item"><span>Cheese Momo</span><span>₹150</span></div>
+        <div class="menu-item">
+          <span>Fried Momo (Veg/Non-Veg)</span><span>₹200</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Tandoori</h3>
+        <div class="menu-item">
+          <span>Tandoori Chicken</span><span>₹500</span>
+        </div>
+        <div class="menu-item"><span>Chicken Tikka</span><span>₹250</span></div>
+        <div class="menu-item">
+          <span>Chicken Seekh Kabab</span><span>₹250</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Chinese (Gravy)</h3>
+        <div class="menu-item">
+          <span>Veg Manchurian</span><span>₹200</span>
+        </div>
+        <div class="menu-item">
+          <span>Chilly Chicken Gravy</span><span>₹250</span>
+        </div>
+        <div class="menu-item">
+          <span>Garlic Chicken Gravy</span><span>₹280</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Manchurian Gravy</span><span>₹300</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Salad</h3>
+        <div class="menu-item"><span>Green Salad</span><span>₹100</span></div>
+        <div class="menu-item"><span>Onion Salad</span><span>₹70</span></div>
+        <div class="menu-item"><span>Fry Papad</span><span>₹40</span></div>
+        <div class="menu-item"><span>Masala Papad</span><span>₹60</span></div>
+        <div class="menu-item"><span>Roast Papad</span><span>₹30</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Indian Rice</h3>
+        <div class="menu-item"><span>Plain Rice</span><span>₹100</span></div>
+        <div class="menu-item"><span>Jeera Rice</span><span>₹120</span></div>
+        <div class="menu-item"><span>Veg Pulao</span><span>₹150</span></div>
+        <div class="menu-item">
+          <span>Kashmiri Pulao</span><span>₹200</span>
+        </div>
+        <div class="menu-item">
+          <span>Chicken Fried Rice</span><span>₹180</span>
+        </div>
+        <div class="menu-item">
+          <span>Veg Fried Rice</span><span>₹120</span>
+        </div>
+        <div class="menu-item">
+          <span>Egg Fried Rice</span><span>₹150</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Paneer</h3>
+        <div class="menu-item"><span>Matar Paneer</span><span>₹180</span></div>
+        <div class="menu-item"><span>Kadhai Paneer</span><span>₹220</span></div>
+        <div class="menu-item">
+          <span>Paneer Butter Masala</span><span>₹220</span>
+        </div>
+        <div class="menu-item"><span>Shahi Paneer</span><span>₹250</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Dal</h3>
+        <div class="menu-item"><span>Plain Dal</span><span>₹80</span></div>
+        <div class="menu-item"><span>Dal Fry</span><span>₹120</span></div>
+        <div class="menu-item"><span>Dal Makhani</span><span>₹180</span></div>
+        <div class="menu-item"><span>Dal Tadka</span><span>₹150</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Chicken Dishes</h3>
+        <div class="menu-item"><span>Chicken Curry</span><span>₹200</span></div>
+        <div class="menu-item">
+          <span>Chicken Masala</span><span>₹220</span>
+        </div>
+        <div class="menu-item"><span>Chicken Kosha</span><span>₹220</span></div>
+        <div class="menu-item"><span>Local Chicken</span><span>₹450</span></div>
+        <div class="menu-item">
+          <span>Chicken Butter Masala</span><span>₹300</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Mutton Dishes</h3>
+        <div class="menu-item"><span>Mutton Curry</span><span>₹400</span></div>
+        <div class="menu-item"><span>Mutton Masala</span><span>₹450</span></div>
+        <div class="menu-item">
+          <span>Mutton Rogan Josh</span><span>₹450</span>
+        </div>
+        <div class="menu-item"><span>Mutton Kosha</span><span>₹450</span></div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Fish</h3>
+        <div class="menu-item"><span>Fish Curry</span><span>₹250</span></div>
+        <div class="menu-item"><span>Fish Tenga</span><span>₹250</span></div>
+        <div class="menu-item"><span>Fish Fry</span><span>₹220</span></div>
+        <div class="menu-item">
+          <span>Boneless Fish Fry</span><span>₹350</span>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <h3>Egg</h3>
+        <div class="menu-item"><span>Egg Curry</span><span>₹100</span></div>
+        <div class="menu-item"><span>Egg Masala</span><span>₹120</span></div>
+        <div class="menu-item"><span>Omlette</span><span>₹80</span></div>
+        <div class="menu-item"><span>Boil Egg</span><span>₹30</span></div>
       </div>
     </div>
-  </header>
 
-  <div class="topbar">
-    <button onclick="toggleDarkMode()"><i class="bi bi-moon-stars-fill"></i></button>
-  </div>
+    <footer>
+      <p>Powered by <span class="highlight">Hotel Haren Grand</span></p>
+      <p>Crafted with care and flavor.</p>
+    </footer>
 
-  <div class="menu-container">
-    <div class="menu-section">
-  <h3>Beverages</h3>
-  <div class="menu-item"><span>Black Tea</span><span>₹30</span></div>
-  <div class="menu-item"><span>Milk Tea</span><span>₹50</span></div>
-  <div class="menu-item"><span>Coffee</span><span>₹60</span></div>
-  <div class="menu-item"><span>Cold Drink</span><span>₹60</span></div>
-  <div class="menu-item"><span>Coffee</span><span>₹60</span></div>
-  <div class="menu-item"><span>Fresh Lime Water</span><span>₹50</span></div>
-  <div class="menu-item"><span>Fresh Lime Soda</span><span>₹60</span></div>
-  <div class="menu-item"><span>Lassi</span><span>₹120</span></div>
-  <div class="menu-item"><span>Packaged Drinking Water</span><span>₹20</span></div>
-  <div class="menu-item"><span>Green Tea</span><span>₹50</span></div>
-</div>
-<div class="menu-section">
-  <h3>Soup (Veg)</h3>
-  <div class="menu-item"><span>Mankhow Soup</span><span>₹120</span></div>
-  <div class="menu-item"><span>Clear Soup</span><span>₹120</span></div>
-  <div class="menu-item"><span>Hot & Sour Soup</span><span>₹150</span></div>
-  <div class="menu-item"><span>Tomato Soup</span><span>₹120</span></div>
-</div>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
 
-<div class="menu-section">
-  <h3>Soup (Non-Veg)</h3>
-  <div class="menu-item"><span>Mankhow Soup</span><span>₹150</span></div>
-  <div class="menu-item"><span>Clear Soup</span><span>₹200</span></div>
-  <div class="menu-item"><span>Hot & Sour Soup</span><span>₹200</span></div>
-</div>
+      function filterMenu() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toLowerCase();
+        const menuSections = document.querySelectorAll(".menu-section");
 
-<div class="menu-section">
-  <h3>Starter (Veg)</h3>
-  <div class="menu-item"><span>Paneer Pakoda</span><span>₹150</span></div>
-  <div class="menu-item"><span>Veg Pakoda</span><span>₹100</span></div>
-  <div class="menu-item"><span>French Fry</span><span>₹120</span></div>
-  <div class="menu-item"><span>Crispy Chilly Baby Corn</span><span>₹220</span></div>
-  <div class="menu-item"><span>Veg Roll</span><span>₹100</span></div>
-  <div class="menu-item"><span>Peanut Masala</span><span>₹120</span></div>
-  <div class="menu-item"><span>Chilly Paneer Dry</span><span>₹200</span></div>
-  <div class="menu-item"><span>Paneer Roll</span><span>₹120</span></div>
-  <div class="menu-item"><span>Garlic Potato</span><span>₹150</span></div>
-</div>
+        menuSections.forEach((section) => {
+          const items = section.querySelectorAll(".menu-item");
+          let sectionVisible = false;
 
-<div class="menu-section">
-  <h3>Starter (Non-Veg)</h3>
-  <div class="menu-item"><span>Hotel Haren Grand Spl. Roll</span><span>₹200</span></div>
-  <div class="menu-item"><span>Chicken Pakoda</span><span>₹150</span></div>
-  <div class="menu-item"><span>Chicken Roll</span><span>₹150</span></div>
-  <div class="menu-item"><span>Chicken Dry Fry</span><span>₹230</span></div>
-  <div class="menu-item"><span>Chilly Chicken Dry</span><span>₹250</span></div>
-  <div class="menu-item"><span>Chicken Finger</span><span>₹200</span></div>
-  <div class="menu-item"><span>Fish Finger</span><span>₹180</span></div>
-  <div class="menu-item"><span>Fish Fry</span><span>₹220</span></div>
-  <div class="menu-item"><span>Small Fish Fry</span><span>₹180</span></div>
-  <div class="menu-item"><span>Chicken Manchurian</span><span>₹300</span></div>
-</div>
+          items.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            if (text.includes(filter)) {
+              item.style.display = "";
+              sectionVisible = true;
+            } else {
+              item.style.display = "none";
+            }
+          });
 
-<div class="menu-section">
-  <h3>Indian Bread</h3>
-  <div class="menu-item"><span>Plain Roti</span><span>₹30</span></div>
-  <div class="menu-item"><span>Butter Roti</span><span>₹40</span></div>
-  <div class="menu-item"><span>Tandoori Roti</span><span>₹80</span></div>
-  <div class="menu-item"><span>Tandoori Butter Roti</span><span>₹90</span></div>
-  <div class="menu-item"><span>Butter Nan</span><span>₹80</span></div>
-  <div class="menu-item"><span>Plain Nan</span><span>₹60</span></div>
-  <div class="menu-item"><span>Lacha Paratha</span><span>₹80</span></div>
-  <div class="menu-item"><span>Plain Paratha</span><span>₹60</span></div>
-  <div class="menu-item"><span>Aloo Paratha</span><span>₹80</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Indian Veg</h3>
-  <div class="menu-item"><span>Tawa Veg</span><span>₹150</span></div>
-  <div class="menu-item"><span>Mix Veg</span><span>₹120</span></div>
-  <div class="menu-item"><span>Seasonal Veg</span><span>₹80</span></div>
-  <div class="menu-item"><span>Alu Bhaji</span><span>₹100</span></div>
-  <div class="menu-item"><span>Alu Matar</span><span>₹150</span></div>
-  <div class="menu-item"><span>Alu Jeera</span><span>₹120</span></div>
-  <div class="menu-item"><span>Alu Dum</span><span>₹150</span></div>
-  <div class="menu-item"><span>Kashmiri Alu Dum</span><span>₹180</span></div>
-  <div class="menu-item"><span>Alu Pitika</span><span>₹80</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Biryani</h3>
-  <div class="menu-item"><span>Veg Biryani</span><span>₹150</span></div>
-  <div class="menu-item"><span>Chicken Biryani</span><span>₹250</span></div>
-  <div class="menu-item"><span>Mutton Biryani</span><span>₹450</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Sandwich</h3>
-  <div class="menu-item"><span>Veg Sandwich</span><span>₹100</span></div>
-  <div class="menu-item"><span>Chicken Sandwich</span><span>₹150</span></div>
-  <div class="menu-item"><span>Cheese Sandwich</span><span>₹120</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Noodles & Maggi</h3>
-  <div class="menu-item"><span>Korean Ramen</span><span>₹300</span></div>
-  <div class="menu-item"><span>Veg Hakka Noodles</span><span>₹150</span></div>
-  <div class="menu-item"><span>Chicken Hakka Noodles</span><span>₹200</span></div>
-  <div class="menu-item"><span>Plain Maggi</span><span>₹100</span></div>
-  <div class="menu-item"><span>Chicken Maggi</span><span>₹150</span></div>
-  <div class="menu-item"><span>Egg Maggi</span><span>₹120</span></div>
-  <div class="menu-item"><span>Cheese Maggi</span><span>₹120</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Prawn</h3>
-  <div class="menu-item"><span>Prawn Dry Fry</span><span>₹300</span></div>
-  <div class="menu-item"><span>Prawn Gravy</span><span>₹350</span></div>
-  <div class="menu-item"><span>Garlic Prawn</span><span>₹350</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Momo</h3>
-  <div class="menu-item"><span>Veg Momo</span><span>₹100</span></div>
-  <div class="menu-item"><span>Chicken Momo</span><span>₹150</span></div>
-  <div class="menu-item"><span>Cheese Momo</span><span>₹150</span></div>
-  <div class="menu-item"><span>Fried Momo (Veg/Non-Veg)</span><span>₹200</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Tandoori</h3>
-  <div class="menu-item"><span>Tandoori Chicken</span><span>₹500</span></div>
-  <div class="menu-item"><span>Chicken Tikka</span><span>₹250</span></div>
-  <div class="menu-item"><span>Chicken Seekh Kabab</span><span>₹250</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Chinese (Gravy)</h3>
-  <div class="menu-item"><span>Veg Manchurian</span><span>₹200</span></div>
-  <div class="menu-item"><span>Chilly Chicken Gravy</span><span>₹250</span></div>
-  <div class="menu-item"><span>Garlic Chicken Gravy</span><span>₹280</span></div>
-  <div class="menu-item"><span>Chicken Manchurian Gravy</span><span>₹300</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Salad</h3>
-  <div class="menu-item"><span>Green Salad</span><span>₹100</span></div>
-  <div class="menu-item"><span>Onion Salad</span><span>₹70</span></div>
-  <div class="menu-item"><span>Fry Papad</span><span>₹40</span></div>
-  <div class="menu-item"><span>Masala Papad</span><span>₹60</span></div>
-  <div class="menu-item"><span>Roast Papad</span><span>₹30</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Indian Rice</h3>
-  <div class="menu-item"><span>Plain Rice</span><span>₹100</span></div>
-  <div class="menu-item"><span>Jeera Rice</span><span>₹120</span></div>
-  <div class="menu-item"><span>Veg Pulao</span><span>₹150</span></div>
-  <div class="menu-item"><span>Kashmiri Pulao</span><span>₹200</span></div>
-  <div class="menu-item"><span>Chicken Fried Rice</span><span>₹180</span></div>
-  <div class="menu-item"><span>Veg Fried Rice</span><span>₹120</span></div>
-  <div class="menu-item"><span>Egg Fried Rice</span><span>₹150</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Paneer</h3>
-  <div class="menu-item"><span>Matar Paneer</span><span>₹180</span></div>
-  <div class="menu-item"><span>Kadhai Paneer</span><span>₹220</span></div>
-  <div class="menu-item"><span>Paneer Butter Masala</span><span>₹220</span></div>
-  <div class="menu-item"><span>Shahi Paneer</span><span>₹250</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Dal</h3>
-  <div class="menu-item"><span>Plain Dal</span><span>₹80</span></div>
-  <div class="menu-item"><span>Dal Fry</span><span>₹120</span></div>
-  <div class="menu-item"><span>Dal Makhani</span><span>₹180</span></div>
-  <div class="menu-item"><span>Dal Tadka</span><span>₹150</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Chicken Dishes</h3>
-  <div class="menu-item"><span>Chicken Curry</span><span>₹200</span></div>
-  <div class="menu-item"><span>Chicken Masala</span><span>₹220</span></div>
-  <div class="menu-item"><span>Chicken Kosha</span><span>₹220</span></div>
-  <div class="menu-item"><span>Local Chicken</span><span>₹450</span></div>
-  <div class="menu-item"><span>Chicken Butter Masala</span><span>₹300</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Mutton Dishes</h3>
-  <div class="menu-item"><span>Mutton Curry</span><span>₹400</span></div>
-  <div class="menu-item"><span>Mutton Masala</span><span>₹450</span></div>
-  <div class="menu-item"><span>Mutton Rogan Josh</span><span>₹450</span></div>
-  <div class="menu-item"><span>Mutton Kosha</span><span>₹450</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Fish</h3>
-  <div class="menu-item"><span>Fish Curry</span><span>₹250</span></div>
-  <div class="menu-item"><span>Fish Tenga</span><span>₹250</span></div>
-  <div class="menu-item"><span>Fish Fry</span><span>₹220</span></div>
-  <div class="menu-item"><span>Boneless Fish Fry</span><span>₹350</span></div>
-</div>
-
-<div class="menu-section">
-  <h3>Egg</h3>
-  <div class="menu-item"><span>Egg Curry</span><span>₹100</span></div>
-  <div class="menu-item"><span>Egg Masala</span><span>₹120</span></div>
-  <div class="menu-item"><span>Omlette</span><span>₹80</span></div>
-  <div class="menu-item"><span>Boil Egg</span><span>₹30</span></div>
-</div>
-
-  </div>
- <footer>
-    <p>📍 Six Mile, Suraj Nagar, Guwahati, Assam- 781022</p>
-    <p>📞 Contact: <span class="highlight">8638145354/6900391380</span></p>
-    <p>📞 Email: <span class="highlight">hotelharengrand@gmail.com</span></p>
-  </footer>
-
-  <script>
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-      const icon = document.querySelector(".topbar button i");
-      icon.className = document.body.classList.contains("dark-mode")
-        ? "bi bi-brightness-high-fill"
-        : "bi bi-moon-stars-fill";
-    }
-  </script>
-</body>
+          section.style.display = sectionVisible ? "" : "none";
+        });
+      }
+    </script>
+  </body>
 </html>
